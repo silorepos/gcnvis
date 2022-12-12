@@ -1,0 +1,349 @@
+{
+	"type": "FeatureCollection",
+	"features": [{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-49.36472, 69.55556]
+			},
+			"properties": {
+				"name": "Swiss Camp 10m",
+				"elevation": "1138",
+				"startdate": "1990-06-01",
+				"enddate": "2020-11-27"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-49.36472, 69.55556]
+			},
+			"properties": {
+				"name": "Swiss Camp",
+				"elevation": "1138",
+				"startdate": "1995-01-01"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-47.02417, 69.87417]
+			},
+			"properties": {
+				"name": "Crawford Point 1",
+				"elevation": "2022",
+				"startdate": "1995-05-23",
+				"enddate": "2020-07-22"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-49.52653, 73.84072]
+			},
+			"properties": {
+				"name": "NASA-U",
+				"elevation": "2369",
+				"startdate": "1995-05-31"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-61.04113, 77.13781]
+			},
+			"properties": {
+				"name": "GITS",
+				"elevation": "1887",
+				"startdate": "1995-06-06"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-56.84233, 78.52833]
+			},
+			"properties": {
+				"name": "Humboldt",
+				"elevation": "1950",
+				"startdate": "1995-06-21"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-38.50454, 72.57972]
+			},
+			"properties": {
+				"name": "Summit",
+				"elevation": "3254",
+				"startdate": "1996-05-15"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-33.96683, 78.01875]
+			},
+			"properties": {
+				"name": "Tunu-N",
+				"elevation": "2113",
+				"startdate": "1996-05-19"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-46.29078, 66.48197]
+			},
+			"properties": {
+				"name": "DYE2",
+				"elevation": "2165",
+				"startdate": "1996-05-26"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-49.71417, 69.49333]
+			},
+			"properties": {
+				"name": "JAR1",
+				"elevation": "900",
+				"startdate": "1996.47",
+				"enddate": "2019-09-08"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-44.50256, 65.99989]
+			},
+			"properties": {
+				"name": "Saddle",
+				"elevation": 2451,
+				"startdate": "1997.30",
+				"enddate": "2021-10-16"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-44.8175, 63.14889]
+			},
+			"properties": {
+				"name": "South Dome",
+				"elevation": "2878",
+				"startdate": "1997.31",
+				"enddate": "2021-06-21"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-29.98375, 75.00228]
+			},
+			"properties": {
+				"name": "NASA-E",
+				"elevation": 2610,
+				"startdate": "1997-05-05"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-46.854722, 69.913333]
+			},
+			"properties": {
+				"name": "Crawford Point 2",
+				"elevation": "1990",
+				"startdate": "1997.52",
+				"enddate": "2001-05-29"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-42.33256, 75.09975]
+			},
+			"properties": {
+				"name": "NGRIP",
+				"elevation": "2950",
+				"startdate": "1997.52",
+				"enddate": "2010-05-08"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-42.49506, 66.47794]
+			},
+			"properties": {
+				"name": "NASA-SE",
+				"elevation": "2360",
+				"startdate": "1998.30",
+				"enddate": "2019-09-26"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-33.00058, 69.69942]
+			},
+			"properties": {
+				"name": "KAR",
+				"elevation": "2579",
+				"startdate": "1999-05-19"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-50.0575, 69.42]
+			},
+			"properties": {
+				"name": "JAR2",
+				"elevation": "568",
+				"startdate": "1999-05-30"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-39.60177, 65.75845]
+			},
+			"properties": {
+				"name": "KULU",
+				"elevation": "878",
+				"startdate": "1999-06-17"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-50.31, 69.39444]
+			},
+			"properties": {
+				"name": "JAR3",
+				"elevation": "283",
+				"startdate": "1999"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-47.29222, 67.13583]
+			},
+			"properties": {
+				"name": "Aurora",
+				"elevation": "1798",
+				"startdate": "2000-06-21"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-60.29305, 80.68361]
+			},
+			"properties": {
+				"name": "Petermann Glacier",
+				"elevation": "37",
+				"startdate": "2002-05-27"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-58.14969, 80.09925]
+			},
+			"properties": {
+				"name": "Petermann ELA",
+				"elevation": "907",
+				"startdate": "2003-05-27"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-51.09994, 77.44128]
+			},
+			"properties": {
+				"name": "NEEM",
+				"elevation": "2460",
+				"startdate": "2006"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-35.98006, 75.62678]
+			},
+			"properties": {
+				"name": "E-GRIP",
+				"elevation": "2653",
+				"startdate": "2014"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-63.95194, -68.14111]
+			},
+			"properties": {
+				"name": "LAR1",
+				"elevation": "0",
+				"startdate": "2008"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-63.2575, -67.57638]
+			},
+			"properties": {
+				"name": "LAR2",
+				"elevation": "0",
+				"startdate": "2008"
+			}
+		},
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-62.65027, -67.03166]
+			},
+			"properties": {
+				"name": "LAR3",
+				"startdate": "2008",
+				"elevation": "0",
+				"enddate": "2011-11-08"
+			}
+		}
+	]
+}
