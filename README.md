@@ -26,7 +26,7 @@ git clone https://github.com/silorepos/gcnvis.git
 
 ```
 python3 -m venv venv
-source /venv/bin/activate  # On Windows: \venv\Scripts\activate.bat
+source /venv/bin/activate  # On Windows: .\venv\Scripts\activate.bat
 ```
 
 2. Install all dependencies 
