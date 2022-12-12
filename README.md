@@ -9,7 +9,7 @@ An interactive environment for visualizing the L1 data of the GC-Net ([link](htt
   - [ ] Add memoization caching
   - [ ] Implement clientside and background callbacks
   - [ ] Speed up serialization to JSON
-- [ ] Rearrange filters
+- [x] Rearrange filters
 - [ ] Refactoring
 - [ ] Visualize climatologies
 - [ ] Visualize uncertainty
@@ -38,7 +38,7 @@ pip install -r requirements.txt
 3. Download the latest L1 data
 
 ```
-bash /scripts/download_data.sh
+bash /scripts/download_data.sh # Or: python /scripts/download_data.py
 ```
 
 4. Run the app (and visit http://127.0.0.1:8050/ in your browser)
