@@ -29,10 +29,10 @@ filters = settings.create_filters()
 tabs = dbc.Tabs(
     [
         dbc.Tab(graphs.time_series, label="Time Series", active_label_style={"font-weight": "800", "color": "#00AEF9"}),
-        dbc.Tab(graphs.scatter_plots,
-                label="Scatter Plots", active_label_style={"font-weight": "800", "color": "#00AEF9"}),
-        dbc.Tab(graphs.violin_plots, label="Violin Plots",
+        dbc.Tab(graphs.violin_plots, label="Distributions",
                 active_label_style={"font-weight": "800", "color": "#00AEF9"}),
+        dbc.Tab(graphs.scatter_plots,
+                label="Correlations", active_label_style={"font-weight": "800", "color": "#00AEF9"}),
         dbc.Tab(graphs.uncertainty_test, label="Uncertainty (test)",
                 active_label_style={"font-weight": "800", "color": "#00AEF9"}),
     ]
@@ -172,7 +172,7 @@ def dropdown_options(value):
     Input("filter-1", "value"),
     Input("filter-2", "value"),
 )
-def update_line_chart(dropdown, station, yrs, value2, value):
+def update_time_series(dropdown, station, yrs, value2, value):
     dff = copy.deepcopy(df_daily if value2 == "Daily" else df_hourly)
     dff = dff[dff.year.astype(int).between(yrs[0], yrs[1])]
 
@@ -222,102 +222,16 @@ def update_line_chart(dropdown, station, yrs, value2, value):
 
     return fig
 
-
 # Callback 3
 @callback(
-    Output('scatter-plot', 'figure'),
-    Input("station-dd", "value"),
-    Input("slider", "value"),
-    Input('scatter-plot-dd-1', 'value'),
-    Input('scatter-plot-dd-2', 'value'),
-    Input('scatter-plot-dd-3', 'value'),
-    Input('filter-1', 'value'),
-)
-def update_scatter(station, yrs, drop1, drop2, drop3, value):
-    dff = copy.deepcopy(df_daily if value == "Daily" else df_hourly)
-    dff = dff[dff.year.astype(int).between(yrs[0], yrs[1])]
-
-    if station is not None:
-        dff = dff.query("station_name == @station")
-
-    trendline = "ols" if drop3 == "OLS trendline" else "lowess"
-    fig = px.scatter(
-        data_frame=dff,
-        x=drop1,
-        y=drop2,
-        title="{} vs. {} ({})".format(drop1, drop2, station),
-        trendline=trendline,
-        trendline_color_override="black",
-    )
-    fig.update_layout(
-        modebar_remove=["pan", "toggleSpikelines", "toImage", "resetScale2d", 'autoScale2d',
-                        'zoom2d', "zoomIn2d", "zoomOut2d", "lasso2d", "select2d"],
-        modebar_orientation="h",
-        margin=dict(l=25, r=25, t=40, b=20),
-        legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=1.02,
-            xanchor="center",
-            x=0.5
-        )
-    )
-    fig.data[0].name = 'Observations'  # noqa
-    fig.data[0].showlegend = True  # noqa
-    fig.data[1].name = "Trendline"  # noqa
-    fig.data[1].showlegend = True  # noqa
-
-    return fig
-
-
-# Callback 4
-@callback(
-    Output('scatter-matrix', 'figure'),
-    Input("station-dd", "value"),
-    Input("slider", "value"),
-    Input('scatter-matrix-dd', 'value'),
-    Input('filter-1', 'value'),
-)
-def update_matrix(station, yrs, drop, value):
-    dff = copy.deepcopy(df_daily if value == "Daily" else df_hourly)
-    dff = dff[dff.year.astype(int).between(yrs[0], yrs[1])]
-
-    if station is not None:
-        dff = dff.query("station_name == @station")
-
-    fig = px.scatter_matrix(
-        dff,
-        dimensions=drop,
-        title="Scatter Matrix ({})".format(station),
-    )
-    fig.update_layout(
-        modebar_remove=["pan", "toggleSpikelines", "toImage", "resetScale2d", 'autoScale2d',
-                        "zoomIn2d", "zoomOut2d"],
-        modebar_orientation="h",
-        margin=dict(l=25, r=25, t=40, b=20),
-        legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=1.02,
-            xanchor="center",
-            x=0.5
-        )
-    )
-    fig.update_traces(diagonal_visible=False)
-
-    return fig
-
-
-# Callback 5
-@callback(
-    Output("ridge-chart", "figure"),
+    Output("ridge-plot", "figure"),
     Input("dropdown", "value"),
     Input("station-dd", "value"),
     Input("slider", "value"),
     Input("filter-1", "value"),
     Input("filter-2", "value"),
 )
-def update_ridge_chart(dropdown, station, yrs, value, value2):
+def update_ridge_plot(dropdown, station, yrs, value, value2):
     dff = copy.deepcopy(df_daily if value == "Daily" else df_hourly)
     dff = dff[dff.year.astype(int).between(yrs[0], yrs[1])]
 
@@ -349,7 +263,7 @@ def update_ridge_chart(dropdown, station, yrs, value, value2):
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
-        y=1.03,
+        y=1.05,
         xanchor="center",
         x=0.5
     ))
@@ -360,15 +274,15 @@ def update_ridge_chart(dropdown, station, yrs, value, value2):
     fig.update_traces(meanline_visible=True)
     fig.update_traces(side='positive', width=3)
 
-    if value == "Temperature":
+    if value2 == "Temperature":
         fig.update_xaxes(ticksuffix=" °C")
-    elif value == "Radiation":
+    elif value2 == "Radiation":
         fig.update_xaxes(ticksuffix=" W/m^2")
-    elif value == "Wind Speed":
+    elif value2 == "Wind Speed":
         fig.update_xaxes(ticksuffix=" m/s")
-    elif value == "Wind Direction":
+    elif value2 == "Wind Direction":
         fig.update_xaxes(ticksuffix=" °")
-    elif value == "Humidity":
+    elif value2 == "Humidity":
         fig.update_xaxes(ticksuffix=" %")
     else:
         fig.update_xaxes(ticksuffix=" n/a")
@@ -376,7 +290,7 @@ def update_ridge_chart(dropdown, station, yrs, value, value2):
     return fig
 
 
-# Callback 6
+# Callback 4
 @callback(
     Output("violin-plot", "figure"),
     Input("dropdown", "value"),
@@ -385,7 +299,7 @@ def update_ridge_chart(dropdown, station, yrs, value, value2):
     Input("filter-1", "value"),
     Input("filter-2", "value"),
 )
-def update_ridge_chart(dropdown, station, yrs, value, value2):
+def update_violin_plot(dropdown, station, yrs, value, value2):
     dff = copy.deepcopy(df_daily if value == "Daily" else df_hourly)
     dff = dff[dff.year.astype(int).between(yrs[0], yrs[1])]
 
@@ -442,14 +356,99 @@ def update_ridge_chart(dropdown, station, yrs, value, value2):
     return fig
 
 
+# Callback 5
+@callback(
+    Output('scatter-plot', 'figure'),
+    Input("station-dd", "value"),
+    Input("slider", "value"),
+    Input('scatter-plot-dd-1', 'value'),
+    Input('scatter-plot-dd-2', 'value'),
+    Input('scatter-plot-dd-3', 'value'),
+    Input('filter-1', 'value'),
+)
+def update_scatter_plot(station, yrs, drop1, drop2, drop3, value):
+    dff = copy.deepcopy(df_daily if value == "Daily" else df_hourly)
+    dff = dff[dff.year.astype(int).between(yrs[0], yrs[1])]
+
+    if station is not None:
+        dff = dff.query("station_name == @station")
+
+    trendline = "ols" if drop3 == "OLS trendline" else "lowess"
+    fig = px.scatter(
+        data_frame=dff,
+        x=drop1,
+        y=drop2,
+        title="{} vs. {} ({})".format(drop1, drop2, station),
+        trendline=trendline,
+        trendline_color_override="black",
+    )
+    fig.update_layout(
+        modebar_remove=["pan", "toggleSpikelines", "toImage", "resetScale2d", 'autoScale2d',
+                        'zoom2d', "zoomIn2d", "zoomOut2d", "lasso2d", "select2d"],
+        modebar_orientation="h",
+        margin=dict(l=25, r=25, t=40, b=20),
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="center",
+            x=0.5
+        )
+    )
+    fig.data[0].name = 'Observations'  # noqa
+    fig.data[0].showlegend = True  # noqa
+    fig.data[1].name = "Trendline"  # noqa
+    fig.data[1].showlegend = True  # noqa
+
+    return fig
+
+
+# Callback 6
+@callback(
+    Output('scatter-matrix', 'figure'),
+    Input("station-dd", "value"),
+    Input("slider", "value"),
+    Input('scatter-matrix-dd', 'value'),
+    Input('filter-1', 'value'),
+)
+def update_scatter_matrix(station, yrs, drop, value):
+    dff = copy.deepcopy(df_daily if value == "Daily" else df_hourly)
+    dff = dff[dff.year.astype(int).between(yrs[0], yrs[1])]
+
+    if station is not None:
+        dff = dff.query("station_name == @station")
+
+    fig = px.scatter_matrix(
+        dff,
+        dimensions=drop,
+        title="{} ({})".format(drop, station),
+    )
+    fig.update_layout(height=len(drop) * 166.667)
+    fig.update_layout(
+        modebar_remove=["pan", "toggleSpikelines", "toImage", "resetScale2d", 'autoScale2d',
+                        "zoomIn2d", "zoomOut2d"],
+        modebar_orientation="h",
+        margin=dict(l=25, r=25, t=40, b=20),
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="center",
+            x=0.5
+        )
+    )
+    fig.update_traces(diagonal_visible=False)
+
+    return fig
+
 # Callback 7
 @callback(
-    Output("null-chart", "figure"),
+    Output("null-values", "figure"),
     Input("station-dd", "value"),
     Input("slider", "value"),
     Input("filter-1", "value")
 )
-def update_null_chart(station, yrs, value):
+def update_null_values(station, yrs, value):
     dff = copy.deepcopy(df_daily if value == "Daily" else df_hourly)
     dff = dff[dff.year.astype(int).between(yrs[0], yrs[1])]
 

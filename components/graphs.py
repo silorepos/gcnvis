@@ -41,6 +41,15 @@ scatter_plot_dd = dbc.Card(
                 options=["OLS trendline", "LOWESS trendline"],
                 value="OLS trendline",
                 clearable=False
+            ),
+            html.Br(),
+            html.H6("Select multiple variables:"),
+            dcc.Dropdown(
+                id="scatter-matrix-dd",
+                options=options_all,
+                value=["ISWR", "OSWR", "NR"],
+                clearable=False,
+                multi=True,
             )
         ]
     ),
@@ -58,21 +67,6 @@ scatter_plot = dbc.Card(
             ],
         ),
     ],
-)
-
-scatter_matrix_dd = dbc.Card(
-    dbc.CardBody(
-        [
-            html.H6("Select dimensions:"),
-            dcc.Dropdown(
-                id="scatter-matrix-dd",
-                options=options_all,
-                value=["ISWR", "OSWR", "NR"],
-                clearable=False,
-                multi=True,
-            )
-        ]
-    ),
 )
 
 scatter_matrix = dbc.Card(
@@ -97,12 +91,13 @@ scatter_plots = html.Div(
                 dbc.Col(scatter_plot, width=10),
                 dbc.Col(scatter_plot_dd, width=2),
             ],
+            className="g-0",
         ),
         dbc.Row(
             [
-                dbc.Col(scatter_matrix, width=10),
-                dbc.Col(scatter_matrix_dd, width=2),
+                dbc.Col(scatter_matrix, width=12),
             ],
+            className="g-0",
         ),
     ]
 )
@@ -112,7 +107,7 @@ ridge_plot = dbc.Card(
         dbc.CardBody(
             [
                 dcc.Graph(
-                    id='ridge-chart',
+                    id='ridge-plot',
                     style={'height': 500},
                     config={'displaylogo': False, "displayModeBar": True},
                 ),
@@ -156,7 +151,7 @@ uncertainty_test = dbc.Card(
         dbc.CardBody(
             [
                 dcc.Graph(
-                    id='null-chart',
+                    id='null-values',
                     style={'height': 500},
                     config={'displaylogo': False, "displayModeBar": True},
                 ),
