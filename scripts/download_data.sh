@@ -14,7 +14,7 @@ echo -ne 'Downloading hourly data...\r'
 xargs -n 1 curl --silent -O --output-dir data_hourly < metadata/urls_2.txt
 
 # Process data
-echo -ne 'Processing dairly data...\r'
+echo -ne 'Processing daily data...\r'
 python scripts/process_data_daily.py
 echo -ne 'Processing hourly data...\r'
 python scripts/process_data_hourly.py

@@ -15,12 +15,6 @@ from config.constants import options_air_temp, options_humidity, options_radiati
 df_daily = pd.read_parquet("data/df_daily.gzip")
 df_hourly = pd.read_parquet("data/df_daily.gzip")
 
-seasons = {1: "Winter", 2: "Winter", 3: "Spring", 4: "Spring", 5: "Spring",
-           6: "Summer", 7: "Summer", 8: "Summer", 9: "Autumn", 10: "Autumn",
-           11: "Autumn", 12: "Winter"}
-
-df_daily["season"] = df_daily.index.month.map(seasons)
-
 # Data settings
 dd_and_slider = settings.create_dd_and_slider()
 filters = settings.create_filters()
@@ -221,6 +215,7 @@ def update_time_series(dropdown, station, yrs, value2, value):
         fig.update_yaxes(ticksuffix=" n/a")
 
     return fig
+
 
 # Callback 3
 @callback(
@@ -440,6 +435,7 @@ def update_scatter_matrix(station, yrs, drop, value):
     fig.update_traces(diagonal_visible=False)
 
     return fig
+
 
 # Callback 7
 @callback(
