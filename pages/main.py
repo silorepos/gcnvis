@@ -8,12 +8,14 @@ from dash_extensions.javascript import assign
 from components import settings
 from components import graphs
 from dash import callback, html, Input, Output, clientside_callback
-from config.constants import options_air_temp, options_humidity, options_radiation, options_wind_speed, \
-    options_wind_direction, options_all, raster_tiles
+from config.constants import options_air_temp, options_humidity, options_pressure, options_radiation,\
+    options_wind_speed, options_wind_direction, options_all, raster_tiles
 
 # Load data
 df_daily = pd.read_parquet("data/df_daily.gzip")
-df_hourly = pd.read_parquet("data/df_daily.gzip")
+df_hourly = pd.read_parquet("data/df_hourly.gzip")
+
+# %%
 
 # Data settings
 dd_and_slider = settings.create_dd_and_slider()
@@ -125,7 +127,7 @@ def dropdown_options(value):
     options_and_values = {
         'Temperature': {
             'options': options_air_temp,
-            'value': ["TA1", "TA2", "TA2m", "TA3", "TA4"],
+            'value': ["TA1", "TA2", "TA3", "TA4", "TA2m"],
         },
         'Radiation': {
             'options': options_radiation,
@@ -142,6 +144,10 @@ def dropdown_options(value):
         'Humidity': {
             'options': options_humidity,
             'value': ["RH1", "RH2", "RH2m"],
+        },
+        'Pressure': {
+            'options': options_pressure,
+            'value': ["P"],
         },
         'Customize': {
             'options': options_all,
@@ -211,6 +217,8 @@ def update_time_series(dropdown, station, yrs, value2, value):
         fig.update_yaxes(ticksuffix=" °")
     elif value == "Humidity":
         fig.update_yaxes(ticksuffix=" %")
+    elif value == "Pressure":
+        fig.update_xaxes(ticksuffix=" mbar")
     else:
         fig.update_yaxes(ticksuffix=" n/a")
 
@@ -254,7 +262,7 @@ def update_ridge_plot(dropdown, station, yrs, value, value2):
     )
 
     fig.update_layout(xaxis_zeroline=False)
-    fig.update_layout(legend_title="", xaxis_title=f"{value2}", yaxis_title=None)
+    fig.update_layout(legend_title="", xaxis_title=f"Mean {value2}", yaxis_title=None)
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -279,6 +287,8 @@ def update_ridge_plot(dropdown, station, yrs, value, value2):
         fig.update_xaxes(ticksuffix=" °")
     elif value2 == "Humidity":
         fig.update_xaxes(ticksuffix=" %")
+    elif value2 == "Pressure":
+        fig.update_xaxes(ticksuffix=" mbar")
     else:
         fig.update_xaxes(ticksuffix=" n/a")
 
@@ -323,7 +333,7 @@ def update_violin_plot(dropdown, station, yrs, value, value2):
     fig.update_xaxes(showspikes=False)
     fig.update_yaxes(showspikes=False)
     fig.update_layout(xaxis_zeroline=False)
-    fig.update_layout(legend_title="", xaxis_title="Season", yaxis_title=None)
+    fig.update_layout(legend_title="", xaxis_title=None, yaxis_title=f"Mean {value2}")
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -345,6 +355,8 @@ def update_violin_plot(dropdown, station, yrs, value, value2):
         fig.update_yaxes(ticksuffix=" °")
     elif value2 == "Humidity":
         fig.update_yaxes(ticksuffix=" %")
+    elif value2 == "Pressure":
+        fig.update_xaxes(ticksuffix=" mbar")
     else:
         fig.update_yaxes(ticksuffix=" n/a")
 

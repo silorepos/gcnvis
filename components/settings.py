@@ -104,13 +104,13 @@ def create_filters():
                     inline=True,
                     options=[{'label': x, 'value': x}
                              for x in
-                             ['Temperature', 'Radiation', 'Wind Speed', "Wind Direction", 'Humidity', "Customize"]]
+                             ['Temperature', 'Radiation', 'Wind Speed', "Wind Direction", 'Humidity', 'Pressure', "Customize"]]
                 ),
 
                 dcc.Dropdown(id='dropdown',
                              multi=True,
                              options=options_air_temp,
-                             value=["TA1", "TA2", "TA2m", "TA3", "TA4"]),
+                             value=["TA1", "TA2", "TA3", "TA4", "TA2m"]),
             ]
         ),
     )

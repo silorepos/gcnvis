@@ -58,6 +58,11 @@ options_humidity = [
     {"label": "RH2m", "value": "RH2m"}
 ]
 
+options_pressure = [
+    {"label": "P", "value": "P"},
+]
+
+
 options_all = [
     {"label": "ISWR (W/m^2)", "value": "ISWR"},
     {"label": "ISWR_max (W/m^2)", "value": "ISWR_max"},
