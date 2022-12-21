@@ -23,7 +23,7 @@ source /venv/bin/activate  # On Windows: .\venv\Scripts\activate.bat
 pip install -r requirements.txt
 ```
 
-3. Download the latest L1 data
+3. Download the latest L1 data (optional)
 
 ```
 bash /scripts/download_data.sh # Or: python /scripts/download_data.py
