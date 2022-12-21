@@ -111,7 +111,7 @@ def create_filters():
                 dcc.Dropdown(id='dropdown',
                              multi=True,
                              options=options_air_temp,
-                             value=["TA1", "TA2", "TA3", "TA4", "TA2m"]),
+                             value=["TA1", "TA2"]),
             ]
         ),
     )

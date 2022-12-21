@@ -130,7 +130,7 @@ def dropdown_options(value):
     options_and_values = {
         'Temperature': {
             'options': options_air_temp,
-            'value': ["TA1", "TA2", "TA3", "TA4"],
+            'value': ["TA1", "TA2"],
         },
         'Radiation': {
             'options': options_radiation,
