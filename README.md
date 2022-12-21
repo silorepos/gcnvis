@@ -1,18 +1,6 @@
-# GC-Net Visualizer
+# GCNVis
 
 An interactive environment for visualizing the L1 data of the GC-Net ([link](https://github.com/GEUS-Glaciology-and-Climate/GC-Net-level-1-data-processing/tree/main/L1)).
-
-### TODO:
-
-- [ ] Deploy to different PaaS (or via GitHub pages)
-- [ ] Improve performance when loading hourly data 
-  - [ ] Add memoization caching
-  - [ ] Implement clientside and background callbacks
-  - [ ] Speed up serialization to JSON
-- [x] Rearrange filters
-- [ ] Refactoring
-- [ ] Visualize climatologies
-- [ ] Visualize uncertainty
 
 ## How to run this app locally
 

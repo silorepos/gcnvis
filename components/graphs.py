@@ -7,9 +7,9 @@ time_series = dbc.Card(
         dbc.CardBody(
             [
                 dcc.Graph(
-                    id='time-series',
-                    style={'height': 700},
-                    config={'displaylogo': False, "displayModeBar": True},
+                    id="time-series",
+                    style={"height": 700},
+                    config={"displaylogo": False, "displayModeBar": True},
                 ),
             ],
         ),
@@ -24,7 +24,7 @@ scatter_plot_dd = dbc.Card(
                 id="scatter-plot-dd-1",
                 options=options_all,
                 value="ISWR",
-                clearable=False
+                clearable=False,
             ),
             html.Br(),
             html.H6("Select variable (y-axis):"),
@@ -32,7 +32,7 @@ scatter_plot_dd = dbc.Card(
                 id="scatter-plot-dd-2",
                 options=options_all,
                 value="OSWR",
-                clearable=False
+                clearable=False,
             ),
             html.Br(),
             html.H6("Select regression trendline:"),
@@ -40,7 +40,7 @@ scatter_plot_dd = dbc.Card(
                 id="scatter-plot-dd-3",
                 options=["OLS trendline", "LOWESS trendline"],
                 value="OLS trendline",
-                clearable=False
+                clearable=False,
             ),
             html.Br(),
             html.H6("Select multiple variables:"),
@@ -50,7 +50,7 @@ scatter_plot_dd = dbc.Card(
                 value=["ISWR", "OSWR", "TA1", "TA2"],
                 clearable=False,
                 multi=True,
-            )
+            ),
         ]
     ),
 )
@@ -60,9 +60,9 @@ scatter_plot = dbc.Card(
         dbc.CardBody(
             [
                 dcc.Graph(
-                    id='scatter-plot',
-                    style={'height': 500},
-                    config={'displaylogo': False, "displayModeBar": True},
+                    id="scatter-plot",
+                    style={"height": 500},
+                    config={"displaylogo": False, "displayModeBar": True},
                 ),
             ],
         ),
@@ -74,9 +74,9 @@ scatter_matrix = dbc.Card(
         dbc.CardBody(
             [
                 dcc.Graph(
-                    id='scatter-matrix',
+                    id="scatter-matrix",
                     # style={'height': 500},
-                    config={'displaylogo': False, "displayModeBar": True},
+                    config={"displaylogo": False, "displayModeBar": True},
                 ),
             ],
         ),
@@ -102,34 +102,38 @@ scatter_plots = html.Div(
     ]
 )
 
-ridge_plot = dbc.Card(
-    [
-        dbc.CardBody(
-            [
-                dcc.Graph(
-                    id='ridge-plot',
-                    style={'height': 500},
-                    config={'displaylogo': False, "displayModeBar": True},
-                ),
-            ],
-        ),
-    ],
-),
+ridge_plot = (
+    dbc.Card(
+        [
+            dbc.CardBody(
+                [
+                    dcc.Graph(
+                        id="ridge-plot",
+                        style={"height": 500},
+                        config={"displaylogo": False, "displayModeBar": True},
+                    ),
+                ],
+            ),
+        ],
+    ),
+)
 
-violin_plot = dbc.Card(
-    [
-        dbc.CardBody(
-            [
-                dcc.Graph(
-                    id='violin-plot',
-                    style={'height': 500},
-                    config={'displaylogo': False, "displayModeBar": True},
-                ),
-            ],
-        ),
-    ],
-    className="mt-1",
-),
+violin_plot = (
+    dbc.Card(
+        [
+            dbc.CardBody(
+                [
+                    dcc.Graph(
+                        id="violin-plot",
+                        style={"height": 500},
+                        config={"displaylogo": False, "displayModeBar": True},
+                    ),
+                ],
+            ),
+        ],
+        className="mt-1",
+    ),
+)
 
 violin_plots = html.Div(
     [
@@ -151,9 +155,9 @@ uncertainty_test = dbc.Card(
         dbc.CardBody(
             [
                 dcc.Graph(
-                    id='null-values',
-                    style={'height': 500},
-                    config={'displaylogo': False, "displayModeBar": True},
+                    id="null-values",
+                    style={"height": 500},
+                    config={"displaylogo": False, "displayModeBar": True},
                 ),
             ],
         ),

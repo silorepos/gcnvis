@@ -7,9 +7,8 @@ def create_navbar():
         dbc.Container(
             [
                 html.A(
-                    dbc.Row([
-                        dbc.Col(dbc.NavbarBrand("GEUS | GCNVis", className="ms-2"))
-                    ],
+                    dbc.Row(
+                        [dbc.Col(dbc.NavbarBrand("GEUS | GCNVis", className="ms-2"))],
                         align="start",
                         className="g-0",
                     ),
@@ -25,20 +24,22 @@ def create_navbar():
                 html.A(
                     dbc.Row(
                         [
-                            dbc.Col(html.Img(src="assets/logos/logo_github.png", height="30px"))
+                            dbc.Col(
+                                html.Img(
+                                    src="assets/logos/logo_github.png", height="30px"
+                                )
+                            )
                         ],
                         align="end",
-                        className="g-0"
+                        className="g-0",
                     ),
                     title="View code",
                     href="https://github.com/silorepos/gcnvis",
                     style={"textDecoration": "none"},
-
                 ),
             ],
-            fluid=True
+            fluid=True,
         ),
-
         color="dark",
         dark=True,
         className="mb-4",

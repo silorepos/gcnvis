@@ -16,11 +16,13 @@ def create_station_dd():
                 html.H6("Select station:"),
                 dcc.Dropdown(
                     id="station-dd",
-                    options=[dict(value=s["name"], label=s["name"]) for s in station_list],
+                    options=[
+                        dict(value=s["name"], label=s["name"]) for s in station_list
+                    ],
                     value="Summit",
                     clearable=False,
                     maxHeight=500,
-                )
+                ),
             ]
         )
     )
@@ -48,7 +50,7 @@ def create_slider():
                     allowCross=False,
                     tooltip={"placement": "bottom", "always_visible": False},
                     value=[years[12], years[20]],
-                )
+                ),
             ]
         )
     )
@@ -89,8 +91,8 @@ def create_filters():
             [
                 html.H6("Filter by :"),
                 dbc.RadioItems(
-                    id='filter-1',
-                    value='Daily',
+                    id="filter-1",
+                    value="Daily",
                     inline=True,
                     options=[
                         {"label": "Daily data", "value": "Daily"},
@@ -100,18 +102,28 @@ def create_filters():
                     inputCheckedClassName="border border-success bg-success",
                 ),
                 dbc.RadioItems(
-                    id='filter-2',
-                    value='Temperature',
+                    id="filter-2",
+                    value="Temperature",
                     inline=True,
-                    options=[{'label': x, 'value': x}
-                             for x in
-                             ['Temperature', 'Radiation', 'Wind Speed', "Wind Direction", 'Humidity', 'Pressure', "Customize"]]
+                    options=[
+                        {"label": x, "value": x}
+                        for x in [
+                            "Temperature",
+                            "Radiation",
+                            "Wind Speed",
+                            "Wind Direction",
+                            "Humidity",
+                            "Pressure",
+                            "Customize",
+                        ]
+                    ],
                 ),
-
-                dcc.Dropdown(id='dropdown',
-                             multi=True,
-                             options=options_air_temp,
-                             value=["TA1", "TA2"]),
+                dcc.Dropdown(
+                    id="dropdown",
+                    multi=True,
+                    options=options_air_temp,
+                    value=["TA1", "TA2"],
+                ),
             ]
         ),
     )

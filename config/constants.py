@@ -35,7 +35,7 @@ options_radiation = [
     {"label": "NR_max", "value": "NR_max"},
     {"label": "NR_std", "value": "NR_std"},
     {"label": "IUVR", "value": "IUVR"},
-    {"label": "ILWR", "value": "ILWR"}
+    {"label": "ILWR", "value": "ILWR"},
 ]
 
 options_wind_speed = [
@@ -45,18 +45,18 @@ options_wind_speed = [
     {"label": "VW2", "value": "VW2"},
     {"label": "VW2_max", "value": "VW2_max"},
     {"label": "VW2_stdev", "value": "VW2_stdev"},
-    {"label": "VW10m", "value": "VW10m"}
+    {"label": "VW10m", "value": "VW10m"},
 ]
 
 options_wind_direction = [
     {"label": "DW1", "value": "DW1"},
-    {"label": "DW2", "value": "DW2"}
+    {"label": "DW2", "value": "DW2"},
 ]
 
 options_humidity = [
     {"label": "RH1", "value": "RH1"},
     {"label": "RH2", "value": "RH2"},
-    {"label": "RH2m", "value": "RH2m"}
+    {"label": "RH2m", "value": "RH2m"},
 ]
 
 options_pressure = [
@@ -151,24 +151,30 @@ station_list = [
     dict(name="E-GRIP", lat=75.626780, lon=-35.980060),
     dict(name="LAR1", lat=-68.14111, lon=-63.95194),
     dict(name="LAR2", lat=-67.57638, lon=-63.25750),
-    dict(name="LAR3", lat=-67.03166, lon=-62.65027)
+    dict(name="LAR3", lat=-67.03166, lon=-62.65027),
 ]
 
 years = np.arange(1990, 2023)
 
-raster_tiles = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+raster_tiles = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
 
-colors_time_series = ['rgba(230, 159, 0, 0.6)',
-                      'rgba(86, 180, 233, 0.75)',
-                      'rgba(0, 158, 115, 0.6)',
-                      'rgba(240, 228, 66, 0.6)',
-                      'rgba(0, 114, 178, 0.6)',
-                      'rgba(213, 94, 0, 0.6)',
-                      'rgba(204, 121, 167, 0.6)',
-                      'rgba(0, 0, 0, 0.6)',
-                      'rgba(240, 228, 66, 0.6)',
-                      'rgba(240, 228, 66, 0.6)']
+colors_time_series = [
+    "rgba(230, 159, 0, 0.6)",
+    "rgba(86, 180, 233, 0.75)",
+    "rgba(0, 158, 115, 0.6)",
+    "rgba(240, 228, 66, 0.6)",
+    "rgba(0, 114, 178, 0.6)",
+    "rgba(213, 94, 0, 0.6)",
+    "rgba(204, 121, 167, 0.6)",
+    "rgba(0, 0, 0, 0.6)",
+    "rgba(240, 228, 66, 0.6)",
+    "rgba(240, 228, 66, 0.6)",
+]
 
-colors_ridge_plot = n_colors('rgb(230, 159, 0)', 'rgb(86, 180, 233)', 12, colortype='rgb')
+colors_ridge_plot = n_colors(
+    "rgb(230, 159, 0)", "rgb(86, 180, 233)", 12, colortype="rgb"
+)
 
-colors_violin_plot = n_colors('rgb(230, 159, 0)', 'rgb(86, 180, 233)', 4, colortype='rgb')
+colors_violin_plot = n_colors(
+    "rgb(230, 159, 0)", "rgb(86, 180, 233)", 4, colortype="rgb"
+)
