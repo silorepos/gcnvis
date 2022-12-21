@@ -2,14 +2,17 @@ import copy
 import dash_bootstrap_components as dbc
 import json
 import pandas as pd
+import plotly.graph_objects as go
 import dash_leaflet as dl
 import plotly.express as px
 from dash_extensions.javascript import assign
 from components import settings
 from components import graphs
+from plotly.colors import n_colors
 from dash import callback, html, Input, Output, clientside_callback
-from config.constants import options_air_temp, options_humidity, options_pressure, options_radiation,\
-    options_wind_speed, options_wind_direction, options_all, raster_tiles
+from config.constants import options_air_temp, options_humidity, options_pressure, options_radiation, \
+    options_wind_speed, options_wind_direction, options_all, raster_tiles, colors_time_series, colors_ridge_plot, \
+    colors_violin_plot
 
 # Load data
 df_daily = pd.read_parquet("data/df_daily.gzip")
@@ -29,7 +32,7 @@ tabs = dbc.Tabs(
                 active_label_style={"font-weight": "800", "color": "#00AEF9"}),
         dbc.Tab(graphs.scatter_plots,
                 label="Correlations", active_label_style={"font-weight": "800", "color": "#00AEF9"}),
-        dbc.Tab(graphs.uncertainty_test, label="Uncertainty (test)",
+        dbc.Tab(graphs.uncertainty_test, label="Uncertainty (UD)",
                 active_label_style={"font-weight": "800", "color": "#00AEF9"}),
     ]
 )
@@ -127,7 +130,7 @@ def dropdown_options(value):
     options_and_values = {
         'Temperature': {
             'options': options_air_temp,
-            'value': ["TA1", "TA2", "TA3", "TA4", "TA2m"],
+            'value': ["TA1", "TA2", "TA3", "TA4"],
         },
         'Radiation': {
             'options': options_radiation,
@@ -135,7 +138,7 @@ def dropdown_options(value):
         },
         'Wind Speed': {
             'options': options_wind_speed,
-            'value': ["VW1", "VW2", "VW10m"],
+            'value': ["VW1", "VW2"],
         },
         'Wind Direction': {
             'options': options_wind_direction,
@@ -143,7 +146,7 @@ def dropdown_options(value):
         },
         'Humidity': {
             'options': options_humidity,
-            'value': ["RH1", "RH2", "RH2m"],
+            'value': ["RH1", "RH2"],
         },
         'Pressure': {
             'options': options_pressure,
@@ -184,7 +187,7 @@ def update_time_series(dropdown, station, yrs, value2, value):
         x=dff.index,
         y=dropdown,
         title=f"{value} ({station})",
-        color_discrete_sequence=px.colors.qualitative.Safe
+        color_discrete_sequence=colors_time_series
     )
     fig.update_traces(mode="lines", hovertemplate=None)
     fig.update_layout(
@@ -241,16 +244,19 @@ def update_ridge_plot(dropdown, station, yrs, value, value2):
     if station is not None:
         dff = dff.query("station_name == @station")
 
+    # colors = n_colors('rgb(230, 159, 0)', 'rgb(86, 180, 233)', 12, colortype='rgb')
+
     fig = px.violin(
         dff,
         x=dropdown,
         y="month",
         color="month",
+        color_discrete_sequence=colors_ridge_plot,
         points="suspectedoutliers",
         category_orders={
             "month": ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
                       'November', 'December']},
-        title=f"{value2} ({station})",
+        title=f"Monthly {value2} ({station})",
         orientation='h',
     )
 
@@ -266,9 +272,9 @@ def update_ridge_plot(dropdown, station, yrs, value, value2):
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
-        y=1.05,
+        y=1.07,
         xanchor="center",
-        x=0.5
+        x=0.6
     ))
     fig.update_xaxes(showgrid=False)
     fig.update_yaxes(showgrid=True)
@@ -311,15 +317,18 @@ def update_violin_plot(dropdown, station, yrs, value, value2):
     if station is not None:
         dff = dff.query("station_name == @station")
 
+    # colors = n_colors('rgb(230, 159, 0)', 'rgb(86, 180, 233)', 4, colortype='rgb')
+
     fig = px.violin(
         dff,
         x="season",
         y=dropdown,
         color="season",
+        color_discrete_sequence=colors_violin_plot,
         box=True,
         points="suspectedoutliers",
         category_orders={"month": ['Spring', 'Summer', 'Autumn', 'Winter']},
-        title=f"{value2} ({station})",
+        title=f"Seasonal {value2} ({station})",
     )
 
     fig.update_layout(
@@ -358,7 +367,7 @@ def update_violin_plot(dropdown, station, yrs, value, value2):
     elif value2 == "Pressure":
         fig.update_xaxes(ticksuffix=" mbar")
     else:
-        fig.update_yaxes(ticksuffix=" n/a")
+        fig.update_yaxes(tickprefix="")
 
     return fig
 
@@ -385,6 +394,7 @@ def update_scatter_plot(station, yrs, drop1, drop2, drop3, value):
         data_frame=dff,
         x=drop1,
         y=drop2,
+        color_discrete_sequence=["#56B4E9"],
         title="{} vs. {} ({})".format(drop1, drop2, station),
         trendline=trendline,
         trendline_color_override="black",
@@ -428,6 +438,7 @@ def update_scatter_matrix(station, yrs, drop, value):
     fig = px.scatter_matrix(
         dff,
         dimensions=drop,
+        color_discrete_sequence=["#56B4E9"],
         title="{} ({})".format(drop, station),
     )
     fig.update_layout(height=len(drop) * 166.667)
@@ -476,6 +487,7 @@ def update_null_values(station, yrs, value):
         dff_null_count,
         x="Category",
         y=['Not Null', 'Null'],
+        color_discrete_sequence=["#009E73", "#D55E00"],
         barmode='relative',
         title=f"Null Values ({station}) {yrs}")
     # fig.update_xaxes(categoryorder='total descending')

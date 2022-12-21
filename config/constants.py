@@ -1,4 +1,5 @@
 import numpy as np
+from plotly.colors import n_colors
 
 options_air_temp = [
     {"label": "TA1", "value": "TA1"},
@@ -156,3 +157,18 @@ station_list = [
 years = np.arange(1990, 2023)
 
 raster_tiles = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+
+colors_time_series = ['rgba(230, 159, 0, 0.6)',
+                      'rgba(86, 180, 233, 0.75)',
+                      'rgba(0, 158, 115, 0.6)',
+                      'rgba(240, 228, 66, 0.6)',
+                      'rgba(0, 114, 178, 0.6)',
+                      'rgba(213, 94, 0, 0.6)',
+                      'rgba(204, 121, 167, 0.6)',
+                      'rgba(0, 0, 0, 0.6)',
+                      'rgba(240, 228, 66, 0.6)',
+                      'rgba(240, 228, 66, 0.6)']
+
+colors_ridge_plot = n_colors('rgb(230, 159, 0)', 'rgb(86, 180, 233)', 12, colortype='rgb')
+
+colors_violin_plot = n_colors('rgb(230, 159, 0)', 'rgb(86, 180, 233)', 4, colortype='rgb')

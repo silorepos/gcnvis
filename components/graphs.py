@@ -47,7 +47,7 @@ scatter_plot_dd = dbc.Card(
             dcc.Dropdown(
                 id="scatter-matrix-dd",
                 options=options_all,
-                value=["ISWR", "OSWR", "NR"],
+                value=["ISWR", "OSWR", "TA1", "TA2"],
                 clearable=False,
                 multi=True,
             )

@@ -8,7 +8,7 @@ def create_navbar():
             [
                 html.A(
                     dbc.Row([
-                        dbc.Col(dbc.NavbarBrand("GEUS | GC-Net Visualizer", className="ms-2"))
+                        dbc.Col(dbc.NavbarBrand("GEUS | GCNVis", className="ms-2"))
                     ],
                         align="start",
                         className="g-0",

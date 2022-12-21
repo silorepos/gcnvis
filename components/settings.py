@@ -47,7 +47,7 @@ def create_slider():
                     marks={year: str(year) for year in range(1990, 2023, 4)},
                     allowCross=False,
                     tooltip={"placement": "bottom", "always_visible": False},
-                    value=[years[0], years[-1]],
+                    value=[years[12], years[20]],
                 )
             ]
         )
@@ -87,16 +87,17 @@ def create_filters():
     filter_set = dbc.Card(
         dbc.CardBody(
             [
-                html.H6("Filter by:"),
-                dbc.Checklist(
+                html.H6("Filter by :"),
+                dbc.RadioItems(
                     id='filter-1',
                     value='Daily',
                     inline=True,
-                    switch=True,
                     options=[
                         {"label": "Daily data", "value": "Daily"},
-                        {"label": "Hourly data (temporarily disabled)", "value": "Hourly", "disabled": True},
+                        {"label": "Hourly data (slow!)", "value": "Hourly"},
                     ],
+                    labelCheckedClassName="text-success",
+                    inputCheckedClassName="border border-success bg-success",
                 ),
                 dbc.RadioItems(
                     id='filter-2',
@@ -116,7 +117,3 @@ def create_filters():
     )
 
     return filter_set
-
-# Call
-# dd_and_slider = create_dd_and_slider()
-# filters = create_filters()

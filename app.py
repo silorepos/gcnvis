@@ -9,7 +9,7 @@ from pages import about, main
 app = Dash(
     __name__,
     external_stylesheets=[dbc.themes.YETI],
-    title='GEUS | GC-Net Visualizer',
+    title='GEUS | GCNVis',
     prevent_initial_callbacks=True,
     suppress_callback_exceptions=True,
     meta_tags=[
