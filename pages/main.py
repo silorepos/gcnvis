@@ -108,27 +108,28 @@ def create_minimap():
     Returns:
         dl_minimap (object): The minimap.
     """
-    dl_minimap = html.Div(dl.Map(
-                children=[
-                    info,
-                    dl.TileLayer(url=raster_tiles, minZoom=3),
-                    dl.GeoJSON(
-                        data=json_data,
-                        options=dict(pointToLayer=point_to_layer),
-                        hideout=["Summit"],
-                        # zoomToBounds=True,
-                        id="geojson",
-                    ),
-                ],
-                style={"width": "100%", "height": "42vh"}, # "height": "37vh"
-                zoomControl=True,
-                attributionControl=False,
-                id="map",
-                zoom=3,
-                zoomDelta=0.5,
-                zoomSnap=0.5,
-                center=[76, -42],
-            ),
+    dl_minimap = html.Div(
+        dl.Map(
+            children=[
+                info,
+                dl.TileLayer(url=raster_tiles, minZoom=3),
+                dl.GeoJSON(
+                    data=json_data,
+                    options=dict(pointToLayer=point_to_layer),
+                    hideout=["Summit"],
+                    # zoomToBounds=True,
+                    id="geojson",
+                ),
+            ],
+            style={"width": "100%", "height": "42vh"},  # "height": "37vh"
+            zoomControl=True,
+            attributionControl=False,
+            id="map",
+            zoom=3,
+            zoomDelta=0.5,
+            zoomSnap=0.5,
+            center=[76, -42],
+        ),
         className="g-0",
     )
 
@@ -143,7 +144,15 @@ layout = dbc.Container(
         dbc.Row(
             [
                 dbc.Col(
-                    [dbc.CardHeader("Data Settings", style={"background": "#f3f3f1"}), dd_and_slider, filters, dbc.CardHeader("Location Map", style={"background": "#f3f3f1"}), minimap],
+                    [
+                        dbc.CardHeader(
+                            "Data Settings", style={"background": "#f3f3f1"}
+                        ),
+                        dd_and_slider,
+                        filters,
+                        dbc.CardHeader("Location Map", style={"background": "#f3f3f1"}),
+                        minimap,
+                    ],
                     width=4,
                 ),
                 dbc.Col(
@@ -581,7 +590,6 @@ def update_null_values(station, yrs, value):
         title=f"Null Values ({station}) {yrs}",
     )
     fig.update_layout(paper_bgcolor="#f3f3f1", plot_bgcolor="#f3f3f1")
-    # fig.update_xaxes(categoryorder='total descending')
     fig.update_traces(hovertemplate=None)
     fig.update_layout(
         hovermode="x unified",
@@ -605,7 +613,7 @@ def update_null_values(station, yrs, value):
     fig.update_layout(
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5)
     )
-    fig.update_layout(legend_title="", xaxis_title="Category", yaxis_title="Count")
+    fig.update_layout(legend_title="", xaxis_title="Variable", yaxis_title="Count")
 
     return fig
 

@@ -8,7 +8,7 @@ time_series = dbc.Card(
             [
                 dcc.Graph(
                     id="time-series",
-                    style={"height": 817},  # 815..
+                    style={"height": 817},  # 815
                     config={"displaylogo": False, "displayModeBar": True},
                 ),
             ],
@@ -26,7 +26,7 @@ scatter_plot_dd = dbc.Card(
                 options=options_all,
                 value="ISWR",
                 clearable=False,
-                style={'width': '90%'},
+                style={"width": "90%"},
             ),
             html.Br(),
             html.H6("Select variable (y-axis):"),
@@ -35,7 +35,7 @@ scatter_plot_dd = dbc.Card(
                 options=options_all,
                 value="OSWR",
                 clearable=False,
-                style={'width': '90%'},
+                style={"width": "90%"},
             ),
             html.Br(),
             html.H6("Select regression trendline:"),
@@ -44,7 +44,7 @@ scatter_plot_dd = dbc.Card(
                 options=["OLS trendline", "LOWESS trendline"],
                 value="OLS trendline",
                 clearable=False,
-                style={'width': '90%'},
+                style={"width": "90%"},
             ),
             html.Br(),
             html.H6("Select multiple variables:"),
@@ -54,7 +54,7 @@ scatter_plot_dd = dbc.Card(
                 value=["ISWR", "OSWR", "TA1", "TA2"],
                 clearable=False,
                 multi=True,
-                style={'width': '90%'},
+                style={"width": "90%"},
             ),
         ]
     ),

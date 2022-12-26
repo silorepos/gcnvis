@@ -22,7 +22,7 @@ def create_station_dd():
                     value="Summit",
                     clearable=False,
                     maxHeight=500,
-                    style={'height': '39px'},
+                    style={"height": "39px"},
                 ),
             ]
         ),
@@ -99,7 +99,7 @@ def create_filters():
                     inline=True,
                     options=[
                         {"label": "Daily data" + "", "value": "Daily"},
-                        {"label": "Hourly data (disabled by PaaS)", "value": "Hourly", "disabled": True},
+                        {"label": "Hourly data", "value": "Hourly"},
                     ],
                     labelCheckedClassName="text-success",
                     inputCheckedClassName="border border-success bg-success",
