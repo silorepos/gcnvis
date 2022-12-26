@@ -47,4 +47,4 @@ def display_page(pathname):
 
 # Run the app
 if __name__ == "__main__":
-    app.run_server(debug=False)  # Specify port with "port="
+    app.run_server(debug=False, port=10000)  # Specify port with "port="
