@@ -19,6 +19,7 @@ app = Dash(
         }
     ],
 )
+server = app.server
 
 # Navigation bar
 navbar = navbar.create_navbar()
