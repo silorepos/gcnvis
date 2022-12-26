@@ -8,12 +8,13 @@ time_series = dbc.Card(
             [
                 dcc.Graph(
                     id="time-series",
-                    style={"height": 700},
+                    style={"height": 817},  # 815..
                     config={"displaylogo": False, "displayModeBar": True},
                 ),
             ],
         ),
     ),
+    color="#f3f3f1",
 )
 
 scatter_plot_dd = dbc.Card(
@@ -25,6 +26,7 @@ scatter_plot_dd = dbc.Card(
                 options=options_all,
                 value="ISWR",
                 clearable=False,
+                style={'width': '90%'},
             ),
             html.Br(),
             html.H6("Select variable (y-axis):"),
@@ -33,6 +35,7 @@ scatter_plot_dd = dbc.Card(
                 options=options_all,
                 value="OSWR",
                 clearable=False,
+                style={'width': '90%'},
             ),
             html.Br(),
             html.H6("Select regression trendline:"),
@@ -41,6 +44,7 @@ scatter_plot_dd = dbc.Card(
                 options=["OLS trendline", "LOWESS trendline"],
                 value="OLS trendline",
                 clearable=False,
+                style={'width': '90%'},
             ),
             html.Br(),
             html.H6("Select multiple variables:"),
@@ -50,9 +54,11 @@ scatter_plot_dd = dbc.Card(
                 value=["ISWR", "OSWR", "TA1", "TA2"],
                 clearable=False,
                 multi=True,
+                style={'width': '90%'},
             ),
         ]
     ),
+    color="#f3f3f1",
 )
 
 scatter_plot = dbc.Card(
@@ -67,6 +73,7 @@ scatter_plot = dbc.Card(
             ],
         ),
     ],
+    color="#f3f3f1",
 )
 
 scatter_matrix = dbc.Card(
@@ -82,6 +89,7 @@ scatter_matrix = dbc.Card(
         ),
     ],
     className="mt-1",
+    color="#f3f3f1",
 )
 
 scatter_plots = html.Div(
@@ -97,7 +105,7 @@ scatter_plots = html.Div(
             [
                 dbc.Col(scatter_matrix, width=12),
             ],
-            className="g-0",
+            className="g-0 border-0",
         ),
     ]
 )
@@ -115,6 +123,7 @@ ridge_plot = (
                 ],
             ),
         ],
+        color="#f3f3f1",
     ),
 )
 
@@ -132,6 +141,7 @@ violin_plot = (
             ),
         ],
         className="mt-1",
+        color="#f3f3f1",
     ),
 )
 
@@ -162,4 +172,5 @@ uncertainty_test = dbc.Card(
             ],
         ),
     ),
+    color="#f3f3f1",
 )

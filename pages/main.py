@@ -6,6 +6,8 @@ import plotly.graph_objects as go
 import dash_leaflet as dl
 import plotly.express as px
 from dash_extensions.javascript import assign
+from plotly.graph_objs import Layout
+
 from components import settings
 from components import graphs
 from plotly.colors import n_colors
@@ -106,9 +108,7 @@ def create_minimap():
     Returns:
         dl_minimap (object): The minimap.
     """
-    dl_minimap = dbc.Card(
-        dbc.CardBody(
-            dl.Map(
+    dl_minimap = html.Div(dl.Map(
                 children=[
                     info,
                     dl.TileLayer(url=raster_tiles, minZoom=3),
@@ -120,15 +120,16 @@ def create_minimap():
                         id="geojson",
                     ),
                 ],
-                style={"width": "100%", "height": "50vh"},
-                zoomControl=False,
+                style={"width": "100%", "height": "42vh"}, # "height": "37vh"
+                zoomControl=True,
                 attributionControl=False,
                 id="map",
                 zoom=3,
+                zoomDelta=0.5,
+                zoomSnap=0.5,
                 center=[76, -42],
             ),
-        ),
-        className="mt-1",
+        className="g-0",
     )
 
     return dl_minimap
@@ -142,7 +143,7 @@ layout = dbc.Container(
         dbc.Row(
             [
                 dbc.Col(
-                    [dbc.CardHeader("Data Settings"), dd_and_slider, filters, minimap],
+                    [dbc.CardHeader("Data Settings", style={"background": "#f3f3f1"}), dd_and_slider, filters, dbc.CardHeader("Location Map", style={"background": "#f3f3f1"}), minimap],
                     width=4,
                 ),
                 dbc.Col(
@@ -171,7 +172,7 @@ def dropdown_options(value):
         },
         "Radiation": {
             "options": options_radiation,
-            "value": ["ISWR", "OSWR", "NR"],
+            "value": ["ISWR", "OSWR"],
         },
         "Wind Speed": {
             "options": options_wind_speed,
@@ -231,6 +232,7 @@ def update_time_series(dropdown, station, yrs, value2, value):
         y=dropdown,
         title=f"{value} ({station})",
         color_discrete_sequence=colors_time_series,
+        template="simple_white",
     )
     fig.update_traces(mode="lines", hovertemplate=None)
     fig.update_layout(
@@ -249,8 +251,9 @@ def update_time_series(dropdown, station, yrs, value2, value):
         modebar_orientation="h",
         margin=dict(l=25, r=25, t=40, b=20),
     )
+    fig.update_layout(paper_bgcolor="#f3f3f1", plot_bgcolor="#f3f3f1")
     fig.update_layout(xaxis_rangeslider_visible=True)
-    fig.update_layout(legend_title="", xaxis_title="Date", yaxis_title=None)
+    fig.update_layout(legend_title="", xaxis_title=None, yaxis_title=None)
     fig.update_layout(
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5)
     )
@@ -274,9 +277,10 @@ def update_time_series(dropdown, station, yrs, value2, value):
     elif value == "Humidity":
         fig.update_yaxes(ticksuffix=" %")
     elif value == "Pressure":
-        fig.update_xaxes(ticksuffix=" mbar")
+        fig.update_yaxes(ticksuffix=" mbar")
     else:
-        fig.update_yaxes(ticksuffix=" n/a")
+        fig.update_yaxes(ticksuffix="")
+        fig.update_layout(yaxis_title="Value")
 
     return fig
 
@@ -325,7 +329,7 @@ def update_ridge_plot(dropdown, station, yrs, value, value2):
         title=f"Monthly {value2} ({station})",
         orientation="h",
     )
-
+    fig.update_layout(paper_bgcolor="#f3f3f1", plot_bgcolor="#f3f3f1")
     fig.update_layout(
         modebar_remove=[
             "pan",
@@ -366,7 +370,8 @@ def update_ridge_plot(dropdown, station, yrs, value, value2):
     elif value2 == "Pressure":
         fig.update_xaxes(ticksuffix=" mbar")
     else:
-        fig.update_xaxes(ticksuffix=" n/a")
+        fig.update_xaxes(ticksuffix="")
+        fig.update_layout(xaxis_title="Value")
 
     return fig
 
@@ -416,7 +421,7 @@ def update_violin_plot(dropdown, station, yrs, value, value2):
         modebar_orientation="v",
         margin=dict(l=25, r=25, t=40, b=20),
     )
-
+    fig.update_layout(paper_bgcolor="#f3f3f1", plot_bgcolor="#f3f3f1")
     fig.update_xaxes(showspikes=False)
     fig.update_yaxes(showspikes=False)
     fig.update_layout(xaxis_zeroline=False)
@@ -439,9 +444,10 @@ def update_violin_plot(dropdown, station, yrs, value, value2):
     elif value2 == "Humidity":
         fig.update_yaxes(ticksuffix=" %")
     elif value2 == "Pressure":
-        fig.update_xaxes(ticksuffix=" mbar")
+        fig.update_yaxes(ticksuffix=" mbar")
     else:
-        fig.update_yaxes(tickprefix="")
+        fig.update_yaxes(ticksuffix="")
+        fig.update_layout(yaxis_title="Value")
 
     return fig
 
@@ -473,6 +479,7 @@ def update_scatter_plot(station, yrs, drop1, drop2, drop3, value):
         trendline=trendline,
         trendline_color_override="black",
     )
+    fig.update_layout(paper_bgcolor="#f3f3f1", plot_bgcolor="#f3f3f1")
     fig.update_layout(
         modebar_remove=[
             "pan",
@@ -519,6 +526,7 @@ def update_scatter_matrix(station, yrs, drop, value):
         color_discrete_sequence=["#56B4E9"],
         title="{} ({})".format(drop, station),
     )
+    fig.update_layout(paper_bgcolor="#f3f3f1", plot_bgcolor="#f3f3f1")
     fig.update_layout(height=len(drop) * 166.667)
     fig.update_layout(
         modebar_remove=[
@@ -572,6 +580,7 @@ def update_null_values(station, yrs, value):
         barmode="relative",
         title=f"Null Values ({station}) {yrs}",
     )
+    fig.update_layout(paper_bgcolor="#f3f3f1", plot_bgcolor="#f3f3f1")
     # fig.update_xaxes(categoryorder='total descending')
     fig.update_traces(hovertemplate=None)
     fig.update_layout(

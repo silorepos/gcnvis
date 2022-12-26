@@ -22,9 +22,11 @@ def create_station_dd():
                     value="Summit",
                     clearable=False,
                     maxHeight=500,
+                    style={'height': '39px'},
                 ),
             ]
-        )
+        ),
+        color="#f3f3f1",
     )
 
     return station_dd
@@ -49,10 +51,11 @@ def create_slider():
                     marks={year: str(year) for year in range(1990, 2023, 4)},
                     allowCross=False,
                     tooltip={"placement": "bottom", "always_visible": False},
-                    value=[years[12], years[20]],
+                    value=[years[0], years[-1]],
                 ),
-            ]
-        )
+            ],
+        ),
+        color="#f3f3f1",
     )
 
     return slider
@@ -95,8 +98,8 @@ def create_filters():
                     value="Daily",
                     inline=True,
                     options=[
-                        {"label": "Daily data", "value": "Daily"},
-                        {"label": "Hourly data (slow!)", "value": "Hourly"},
+                        {"label": "Daily data" + "", "value": "Daily"},
+                        {"label": "Hourly data (disabled by PaaS)", "value": "Hourly", "disabled": True},
                     ],
                     labelCheckedClassName="text-success",
                     inputCheckedClassName="border border-success bg-success",
@@ -124,8 +127,10 @@ def create_filters():
                     options=options_air_temp,
                     value=["TA1", "TA2"],
                 ),
-            ]
+            ],
         ),
+        className="mb-4",
+        color="#f3f3f1",
     )
 
     return filter_set

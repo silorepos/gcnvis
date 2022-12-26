@@ -4,7 +4,7 @@
 			"type": "Feature",
 			"geometry": {
 				"type": "Point",
-				"coordinates": [-49.36472, 69.55556]
+				"coordinates": [-49.37472, 69.57556]
 			},
 			"properties": {
 				"name": "Swiss Camp 10m",
@@ -131,7 +131,7 @@
 			},
 			"properties": {
 				"name": "Saddle",
-				"elevation": 2451,
+				"elevation": "2451",
 				"startdate": "1997.30",
 				"enddate": "2021-10-16"
 			}
@@ -157,7 +157,7 @@
 			},
 			"properties": {
 				"name": "NASA-E",
-				"elevation": 2610,
+				"elevation": "2610",
 				"startdate": "1997-05-05"
 			}
 		},
