@@ -2,7 +2,7 @@ import nead
 import pandas as pd
 
 # Convert NEAD files to Pandas dataframes
-station = pd.read_csv("/metadata/station_info.csv", header=0)
+station = pd.read_csv("metadata/station_info.csv", header=0)
 dfs_daily = []
 
 for name, ID in zip(station.Name, station.ID):
