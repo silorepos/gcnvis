@@ -14,7 +14,7 @@ git clone https://github.com/silorepos/gcnvis.git
 
 ```
 python3 -m venv venv
-source /venv/bin/activate  # On Windows: .\venv\Scripts\activate.bat
+source venv/bin/activate  # On Windows: .\venv\Scripts\activate.bat
 ```
 
 2. Install all dependencies 
@@ -26,7 +26,8 @@ pip install -r requirements.txt
 3. Download the latest L1 data (optional)
 
 ```
-bash /scripts/download_data.sh # Or: python /scripts/download_data.py
+cd scripts
+bash download_data.sh # Or: python download_data.py
 ```
 
 4. Run the app (and visit http://127.0.0.1:8050/ in your browser)
