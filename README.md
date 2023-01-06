@@ -1,6 +1,6 @@
 # GCNVis
 
-An interactive environment for visualizing the L1 data of the GC-Net ([link](https://github.com/GEUS-Glaciology-and-Climate/GC-Net-level-1-data-processing/tree/main/L1)).
+An interactive tool for visualizing the L1 data of the GC-Net ([link](https://github.com/GEUS-Glaciology-and-Climate/GC-Net-level-1-data-processing/tree/main/L1)).
 
 ## How to run this app locally
 
