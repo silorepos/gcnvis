@@ -119,7 +119,7 @@
 			"properties": {
 				"name": "JAR1",
 				"elevation": "900",
-				"startdate": "1996.47",
+				"startdate": "1996-06-21",
 				"enddate": "2019-09-08"
 			}
 		},
@@ -132,7 +132,7 @@
 			"properties": {
 				"name": "Saddle",
 				"elevation": "2451",
-				"startdate": "1997.30",
+				"startdate": "1997-04-20",
 				"enddate": "2021-10-16"
 			}
 		},
@@ -145,7 +145,7 @@
 			"properties": {
 				"name": "South Dome",
 				"elevation": "2878",
-				"startdate": "1997.31",
+				"startdate": "1997-04-24",
 				"enddate": "2021-06-21"
 			}
 		},
@@ -170,7 +170,7 @@
 			"properties": {
 				"name": "Crawford Point 2",
 				"elevation": "1990",
-				"startdate": "1997.52",
+				"startdate": "1997-07-09",
 				"enddate": "2001-05-29"
 			}
 		},
@@ -183,7 +183,7 @@
 			"properties": {
 				"name": "NGRIP",
 				"elevation": "2950",
-				"startdate": "1997.52",
+				"startdate": "1997-07-09",
 				"enddate": "2010-05-08"
 			}
 		},
@@ -196,7 +196,7 @@
 			"properties": {
 				"name": "NASA-SE",
 				"elevation": "2360",
-				"startdate": "1998.30",
+				"startdate": "1998-04-20",
 				"enddate": "2019-09-26"
 			}
 		},
