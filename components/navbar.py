@@ -3,6 +3,12 @@ import dash_bootstrap_components as dbc
 
 
 def create_navbar():
+    """
+    This function creates a navigation bar.
+
+    Returns:
+        navigation_bar (object): The navigation bar.
+    """
     navigation_bar = dbc.Navbar(
         dbc.Container(
             [
